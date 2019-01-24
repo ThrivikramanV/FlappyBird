@@ -31,19 +31,19 @@ win = pygame.display.set_mode((displaywidth,displayheight))
 pygame.display.set_caption('Flappy Bird')
 clock = pygame.time.Clock()
 
-background = pygame.image.load('C:\\Users\\Thrivikraman\\Desktop\\flappybird\\MyVersion\\Assets\\background-day.png')
-birds = [pygame.image.load(f'C:\\Users\\Thrivikraman\\Desktop\\flappybird\\MyVersion\\Assets\\redbird{i}.png') for i in range(1,7)]
-pipes = [pygame.image.load('C:\\Users\\Thrivikraman\\Desktop\\flappybird\\MyVersion\\Assets\\pipedown.png'),pygame.image.load('C:\\Users\\Thrivikraman\\Desktop\\flappybird\\MyVersion\\Assets\\pipeup.png')]
-base = pygame.image.load('C:\\Users\\Thrivikraman\\Desktop\\flappybird\\MyVersion\\Assets\\base.png')
-digits = [pygame.image.load(f'C:\\Users\\Thrivikraman\\Desktop\\flappybird\\MyVersion\\Assets\\{i}.png') for i in range(10)]
-flappybird = pygame.image.load('C:\\Users\\Thrivikraman\\Desktop\\flappybird\\MyVersion\\Assets\\flappybird.png')
-gameover = pygame.image.load('C:\\Users\\Thrivikraman\\Desktop\\flappybird\\MyVersion\\Assets\\gameover.png')
-birdicon = pygame.image.load('C:\\Users\\Thrivikraman\\Desktop\\flappybird\\MyVersion\\Assets\\birdicon.png')
-cred = pygame.image.load('C:\\Users\\Thrivikraman\\Desktop\\flappybird\\MyVersion\\Assets\\credits.png')
+background = pygame.image.load('.\\Assets\\background-day.png')
+birds = [pygame.image.load(f'.\\Assets\\redbird{i}.png') for i in range(1,7)]
+pipes = [pygame.image.load('.\\Assets\\pipedown.png'),pygame.image.load('.\\Assets\\pipeup.png')]
+base = pygame.image.load('.\\Assets\\base.png')
+digits = [pygame.image.load(f'.\\Assets\\{i}.png') for i in range(10)]
+flappybird = pygame.image.load('.\\Assets\\flappybird.png')
+gameover = pygame.image.load('.\\Assets\\gameover.png')
+birdicon = pygame.image.load('.\\Assets\\birdicon.png')
+cred = pygame.image.load('.\\Assets\\credits.png')
 
-falldown = pygame.mixer.Sound('C:\\Users\\Thrivikraman\\Desktop\\flappybird\\MyVersion\\Assets\\falldown.wav')
-hit = pygame.mixer.Sound('C:\\Users\\Thrivikraman\\Desktop\\flappybird\\MyVersion\\Assets\\hit.wav')
-point = pygame.mixer.Sound('C:\\Users\\Thrivikraman\\Desktop\\flappybird\\MyVersion\\Assets\\point.wav')
+falldown = pygame.mixer.Sound('.\\Assets\\falldown.wav')
+hit = pygame.mixer.Sound('.\\Assets\\hit.wav')
+point = pygame.mixer.Sound('.\\Assets\\point.wav')
 
 pygame.display.set_icon(birdicon)
 
@@ -82,12 +82,12 @@ def messagedisplay(text,colour,fontsize,pos_x,pos_y):
     win.blit(textSurf,textRect)
 
 def crash(score):
-    with open(f'C:\\Users\\Thrivikraman\\Desktop\\flappybird\\MyVersion\\bestscores\\{level}.txt','r') as fin:
+    with open(f'.\\bestscores\\{level}.txt','r') as fin:
         bestscore=fin.read()
     bestscore=bestscore.strip()
     bestscore=int(bestscore)
     if score > bestscore:
-        with open(f'C:\\Users\\Thrivikraman\\Desktop\\flappybird\\MyVersion\\bestscores\\{level}.txt','w') as fout:
+        with open(f'.\\bestscores\\{level}.txt','w') as fout:
             fout.write(str(score))        
     win.blit(gameover,(displaywidth/2-(192/2),150))
     pygame.display.update()
@@ -185,7 +185,7 @@ def startscreen():
             win.blit(flappybird,(displaywidth/2-(184/2),120))
             button(f'LEVEL:{level[:1].upper()}',5,5,100,30,purple,brightpurple,'levels')
             messagedisplay('BEST SCORE',brightred,23,500,175)
-            with open(f'C:\\Users\\Thrivikraman\\Desktop\\flappybird\\MyVersion\\bestscores\\{level}.txt','r') as fin:
+            with open(f'.\\bestscores\\{level}.txt','r') as fin:
                 bestscore=fin.read()
             bestscore=bestscore.strip()
             bestscore=int(bestscore)
